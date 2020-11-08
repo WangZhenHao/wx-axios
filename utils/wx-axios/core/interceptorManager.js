@@ -17,7 +17,6 @@ InterceptorManager.prototype.eject = function eject(id) {
 };
 
 InterceptorManager.prototype.forEach = function (fn) {
-  debugger
   this.handlers.forEach(function forEachHandler(h) {
     if (h !== null) {
       fn(h)

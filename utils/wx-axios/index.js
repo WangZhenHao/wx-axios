@@ -1,2 +1,7 @@
+const cancelToken = require('./cancel/cancelToken.js')
+const wxAios = require('./core/wxAxios.js')
 
-module.exports = require('./core/axios.js')
+wxAios.cancelToken = cancelToken
+
+
+module.exports = wxAios;

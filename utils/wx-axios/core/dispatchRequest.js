@@ -8,11 +8,12 @@ function dispatchRequest(config) {
     timeout,
     method,
     dataType,
-    responseType
+    responseType,
+    cancelToken
   } = config
 
   return new Promise((resolve, reject) => {
-    wx.request({
+    let request = wx.request({
       url,
       data,
       header,
@@ -21,12 +22,25 @@ function dispatchRequest(config) {
       dataType,
       responseType,
       success: (response) => {
+        response.config = config
         settle(resolve, reject, response)
       },
       fail: (reason) => {
         reject(reason)
       }
     })
+
+    if(cancelToken) {
+      cancelToken.promise.then(function onCanceled(cancel) {
+        if(!request) {
+          return
+        }
+
+        request.abort();
+        reject(cancel)
+        request = null;
+      })
+    }
   })
   
 }

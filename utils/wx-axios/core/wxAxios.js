@@ -1,9 +1,10 @@
 const mergeConfig = require('./mergeConfig.js')
 const dispatchRequest = require('./dispatchRequest.js')
 const InterceptorManager = require('./interceptorManager.js')
-
+const defaults = require('../defaults,js')
+const methods = ['get', 'post', 'put']
 function wxAxios(instanceConfig) {
-  this.defaults = instanceConfig;
+  this.defaults = mergeConfig(defaults, instanceConfig);
   this.interceptors = {
     request: new InterceptorManager(),
     response: new InterceptorManager()
@@ -23,12 +24,12 @@ wxAxios.prototype = {
     var promise = Promise.resolve(config)
 
     this.interceptors.request.forEach(function unshfitRequsetInterceptors(intercetpor) {
-      chain.unshift(intercetpor.fulfilled, interceptor.rejected)
+      chain.unshift(intercetpor.fulfilled, intercetpor.rejected)
     })
     this.interceptors.response.forEach(function pushResponseInterceptors(intercetpor) {
-      chain.push(intercetpor.fulfilled, interceptor.rejected)
+      chain.push(intercetpor.fulfilled, intercetpor.rejected)
     })
-
+    
     while(chain.length) {
       promise = promise.then(chain.shift(), chain.shift())
     }
@@ -36,5 +37,13 @@ wxAxios.prototype = {
     return promise;
   },
 }
-
+methods.forEach((method) => {
+  wxAxios.prototype[method] = function(url, data, config) {
+    return this.request(mergeConfig(config || {}, {
+      url: url,
+      data: data,
+      method: method
+    }))
+  }
+})
 module.exports = wxAxios;
