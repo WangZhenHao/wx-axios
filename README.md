@@ -39,7 +39,7 @@ this.axios.post('http://www.baidu.com/tes', {wzh: 'wzh'}).then(res => {
 })
 
 // 取消请求
-const source = axios.cancelToken.source();
+const source = wxAxios.cancelToken.source();
 
 this.axios.request({
   url: 'http://www.baidu.com/tset',
