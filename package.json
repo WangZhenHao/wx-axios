@@ -1,0 +1,22 @@
+{
+  "name": "wx-axios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WangZhenHao/wx-axios.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WangZhenHao/wx-axios/issues"
+  },
+  "homepage": "https://github.com/WangZhenHao/wx-axios#readme"
+}
