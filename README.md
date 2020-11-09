@@ -1,6 +1,10 @@
 # 参考axios的写法而开发的微信小程序requset请求
 
 ```
+小程序导入example目录即可访问
+```
+
+```
 // 安装依赖
 npm install
 
