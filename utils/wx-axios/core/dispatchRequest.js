@@ -1,7 +1,8 @@
 const settle = require('./settle.js')
+const buildFullPath = require('../helpers/buildFullPath.js')
 
 function dispatchRequest(config) {
-  const {
+  let {
     url,
     data,
     header,
@@ -9,8 +10,11 @@ function dispatchRequest(config) {
     method,
     dataType,
     responseType,
-    cancelToken
+    cancelToken,
+    baseURL
   } = config
+  
+  url = buildFullPath(baseURL, url)
 
   return new Promise((resolve, reject) => {
     let request = wx.request({
