@@ -31,6 +31,18 @@ Page({
     })
   },
   testRequest() {
+
+    this.axios.request({
+      url: 'http://www.baidu.com/tset',
+      cancelToken: source.token
+    }).then(res => {
+      console.log(res, 'resolve')
+    }).catch(res => {
+      console.log(res, 'resolve')
+    })
+
+  },
+  testCanel() {
     const source = axios.cancelToken.source();
 
     this.axios.request({
@@ -42,6 +54,6 @@ Page({
       console.log(res, 'resolve')
     })
 
-    // source.cancel('取消请求')
-  }
+    source.cancel('取消请求')
+  } 
 })
