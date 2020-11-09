@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-const axios = require('../../utils/dist/wx-axois.js')
+const axios = require('../../dist/wx-axois')
 console.log(axios.cancelToken.source())
 Page({
   onLoad: function () {
