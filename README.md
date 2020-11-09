@@ -5,6 +5,56 @@
 ```
 
 ```
+const wxAxios = require('../../dist/wx-axois')
+
+this.axios = new wxAxios({
+  timeout: 0,
+  header: {
+    'my-hearder': '1111'
+  }
+});
+
+this.axios.interceptors.response.use(function(res) {
+  return res;
+}, function(reject) {
+  return reject
+})
+
+this.axios.interceptors.request.use(function(res) {
+  return res;
+})
+
+// get请求
+this.axios.get('http://www.baidu.com/tes', {wzh: 'wzh'}).then(res => {
+  console.log(res)
+}).catch(res => {
+  console.log(res)
+})
+
+// post请求
+this.axios.post('http://www.baidu.com/tes', {wzh: 'wzh'}).then(res => {
+  console.log(res)
+}).catch(res => {
+  console.log(res)
+})
+
+// 取消请求
+const source = axios.cancelToken.source();
+
+this.axios.request({
+  url: 'http://www.baidu.com/tset',
+  cancelToken: source.token
+}).then(res => {
+  console.log(res, 'resolve')
+}).catch(res => {
+  console.log(res, 'resolve')
+})
+
+source.cancel('取消请求')
+
+```
+
+```
 // 安装依赖
 npm install
 
