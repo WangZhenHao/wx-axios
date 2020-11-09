@@ -33,8 +33,7 @@ Page({
   testRequest() {
 
     this.axios.request({
-      url: 'http://www.baidu.com/tset',
-      cancelToken: source.token
+      url: 'http://www.baidu.com/tset'
     }).then(res => {
       console.log(res, 'resolve')
     }).catch(res => {
