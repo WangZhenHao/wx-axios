@@ -1,6 +1,6 @@
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-const path = require('path');
+const resolve =  require('rollup-plugin-node-resolve');
+const babel = require('rollup-plugin-babel');
+const commonjs = require('rollup-plugin-commonjs')
 
 export default {
   input: 'src/index.js',
@@ -13,6 +13,7 @@ export default {
     inlude: 'src/**'
   },
   plugins: [
+    commonjs(),
     resolve(),
     babel({
       exclude: 'node_modules/**' // 只编译我们的源代码

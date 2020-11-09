@@ -3,6 +3,7 @@ const rollup = require('rollup');
 const resolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
 const { uglify } = require('rollup-plugin-uglify');
+const commonjs = require('rollup-plugin-commonjs');
 
 function rePath (dir) {
   return path.resolve(__dirname, './', dir)
@@ -13,6 +14,7 @@ const builds = [
     inputOptions: {
       input: rePath('../src/index.js'),
       plugins: [
+        commonjs(),
         resolve(),
         babel({
           exclude: 'node_modules/**' // 只编译我们的源代码
@@ -20,8 +22,8 @@ const builds = [
       ]
     },
     outputOptions: {
-      file: rePath('../dist/img-lazy-load.js'),
-      name: 'ImgLazyLoad',
+      file: rePath('../dist/wx-axois.js'),
+      name: 'WxAxois',
       format: 'umd'
     }
   },
@@ -29,6 +31,7 @@ const builds = [
     inputOptions: {
       input: rePath('../src/index.js'),
       plugins: [
+        commonjs(),
         uglify(),
         resolve(),
         babel({
@@ -37,8 +40,8 @@ const builds = [
       ]
     },
     outputOptions: {
-      file: rePath('../dist/img-lazy-load.min.js'),
-      name: 'ImgLazyLoad',
+      file: rePath('../dist/wx-axois.min.js'),
+      name: 'WxAxois',
       format: 'umd'
     }
   }
