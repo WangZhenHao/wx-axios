@@ -10,7 +10,8 @@ Page({
       timeout: 0,
       header: {
         'my-hearder': '1111'
-      }
+      },
+      baseURL: 'http://www.baidu.com'
     });
 
     this.axios.interceptors.response.use(function(res) {
@@ -24,7 +25,14 @@ Page({
     })
   },
   testPost() {
-    this.axios.post('http://www.baidu.com/tes', {wzh: 'wzh'}).then(res => {
+    this.axios.post('/tes', {wzh: 'wzh'}).then(res => {
+      console.log(res)
+    }).catch(res => {
+      console.log(res)
+    })
+  },
+  testGet() {
+    this.axios.get('/tes', {wzh: 'wzh'}).then(res => {
       console.log(res)
     }).catch(res => {
       console.log(res)
@@ -33,7 +41,10 @@ Page({
   testRequest() {
 
     this.axios.request({
-      url: 'http://www.baidu.com/tset'
+      url: '/tset',
+      data: {
+        name: 'wzh'
+      }
     }).then(res => {
       console.log(res, 'resolve')
     }).catch(res => {
@@ -45,7 +56,7 @@ Page({
     const source = axios.cancelToken.source();
 
     this.axios.request({
-      url: 'http://www.baidu.com/tset',
+      url: '/tset',
       cancelToken: source.token
     }).then(res => {
       console.log(res, 'resolve')

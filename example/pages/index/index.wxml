@@ -2,5 +2,6 @@
 <view class="container">
   <button bindtap="testRequest">点击发起请求</button>
   <button bindtap="testPost">测试post方法</button>
+  <button bindtap="testGet">测试Get方法</button>
   <button bindtap="testCanel">测试取消请求方法</button>
 </view>

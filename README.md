@@ -11,7 +11,8 @@ this.axios = new wxAxios({
   timeout: 0,
   header: {
     'my-hearder': '1111'
-  }
+  },
+  baseURL: ''
 });
 
 this.axios.interceptors.response.use(function(res) {
