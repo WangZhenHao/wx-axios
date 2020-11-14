@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "c-area": "./components/c-area/c-area",
+    "test": "./components/test/test"
+  }
+}

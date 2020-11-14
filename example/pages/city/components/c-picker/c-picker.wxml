@@ -1,0 +1,19 @@
+<wxs src="./index.wxs" module="getOptionText" />
+
+<picker-view
+  indicator-style="height: 50px;"
+  class="pinker-view"
+  bindchange="bindChange"
+>
+  <!-- <c-picker-column
+    wx:for="{{ columns }}"
+    initial-options="{{ item }}"
+  ></c-picker-column> -->
+  <picker-view-column wx:for="{{ list }}">
+    <view
+      wx:for="{{ item }}"
+      wx:for-item="option"
+      style="text-align: center; line-height: 50px;"
+    >{{ getOptionText(option, valueKey) }}</view>
+  </picker-view-column>
+</picker-view>

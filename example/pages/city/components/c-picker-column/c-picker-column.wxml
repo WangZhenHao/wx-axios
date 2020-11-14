@@ -1,0 +1,9 @@
+<!-- <wxs src="./index.wxs" module="getOptionText" /> -->
+
+<picker-view-column>
+  <view
+    wx:for="{{ initialOptions }}"
+    wx:for-item="option"
+    style="text-align: center; line-height: 50px; width: 33%;"
+  >{{ getOptionText(option, valueKey) }}</view>
+</picker-view-column>

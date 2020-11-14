@@ -1,0 +1,7 @@
+<view>
+  <c-picker
+    id="c-picker"
+    bindpickerChange="pickerChangeHandle"
+    columns="{{ columns }}"
+  ></c-picker>
+</view>

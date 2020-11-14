@@ -1,0 +1,27 @@
+<picker-view
+  indicator-style="height: 50px;"
+  class="pinker-view"
+  bindchange="bindChange"
+>
+  <picker-view-column data-index="0">
+    <view
+      wx:for="{{ province }}"
+      wx:for-item="list"
+      style="text-align: center; line-height: 50px;"
+    >{{ list.name }}</view>
+  </picker-view-column>
+  <picker-view-column>
+    <view
+      wx:for="{{ city }}"
+      wx:for-item="list"
+      style="text-align: center; line-height: 50px;"
+    >{{list.name}}</view>
+  </picker-view-column>
+  <picker-view-column>
+    <view
+      wx:for="{{ county }}"
+      wx:for-item="list"
+      style="text-align: center; line-height: 50px;"
+    >{{list.name}}</view>
+  </picker-view-column>
+</picker-view>

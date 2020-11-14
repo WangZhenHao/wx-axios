@@ -1,0 +1,9 @@
+.pinker-view {
+  background: #fff;
+  width: 100%; 
+  height: 300px;
+}
+.column-item {
+  text-align: center;
+  line-height: 40px;
+}
