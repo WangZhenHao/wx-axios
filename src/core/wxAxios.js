@@ -1,10 +1,11 @@
 const mergeConfig = require('./mergeConfig.js')
 const dispatchRequest = require('./dispatchRequest.js')
 const InterceptorManager = require('./interceptorManager.js')
-const defaults = require('../defaults.js')
+// const defaults = require('../defaults.js')
 const methods = ['get', 'post', 'put']
 function wxAxios(instanceConfig) {
-  this.defaults = mergeConfig(defaults, instanceConfig);
+  // this.defaults = mergeConfig(defaults, instanceConfig);
+  this.defaults = instanceConfig
   this.interceptors = {
     request: new InterceptorManager(),
     response: new InterceptorManager()
@@ -14,7 +15,7 @@ function wxAxios(instanceConfig) {
 wxAxios.prototype = {
   request(config = {}) {
     config = mergeConfig(this.defaults, config)
-    
+    // debugger
     if(!config.method) {
       config.method = 'get'
     }

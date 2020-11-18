@@ -150,19 +150,11 @@
 
   var interceptorManager = InterceptorManager;
 
-  var defaults = {
-    timeout: 0,
-    header: {
-      'content-type': 'application/json'
-    },
-    method: 'GET'
-  };
-  var defaults_1 = defaults;
-
   var methods = ['get', 'post', 'put'];
 
   function wxAxios(instanceConfig) {
-    this.defaults = mergeConfig_1(defaults_1, instanceConfig);
+    // this.defaults = mergeConfig(defaults, instanceConfig);
+    this.defaults = instanceConfig;
     this.interceptors = {
       request: new interceptorManager(),
       response: new interceptorManager()
@@ -172,7 +164,7 @@
   wxAxios.prototype = {
     request: function request() {
       var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      config = mergeConfig_1(this.defaults, config);
+      config = mergeConfig_1(this.defaults, config); // debugger
 
       if (!config.method) {
         config.method = 'get';
@@ -206,8 +198,45 @@
   });
   var wxAxios_1 = wxAxios;
 
-  wxAxios_1.cancelToken = cancelToken_1;
-  var src = wxAxios_1;
+  var defaults = {
+    timeout: 0,
+    header: {
+      'content-type': 'application/json'
+    },
+    method: 'GET'
+  };
+  var defaults_1 = defaults;
+
+  function extend(to, form) {
+    for (var i in form) {
+      to[i] = form[i];
+    }
+
+    return to;
+  }
+
+  var utils = {
+    extend: extend
+  };
+
+  var extend$1 = utils.extend; // wxAios.cancelToken = cancelToken
+
+  function createInstance(config) {
+    var context = new wxAxios_1(config);
+    var instance = wxAxios_1.prototype.request.bind(context);
+    extend$1(instance, context);
+    return instance;
+  }
+
+  var axios = createInstance(defaults_1);
+
+  axios.create = function create(config) {
+    return createInstance(Object.assign(defaults_1, config));
+  };
+
+  axios.cancelToken = cancelToken_1; // console.log(createInstance())
+
+  var src = axios;
 
   return src;
 

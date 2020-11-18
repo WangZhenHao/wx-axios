@@ -7,7 +7,13 @@
 ```
 const wxAxios = require('../../dist/wx-axois')
 
-this.axios = new wxAxios({
+wxAxios.get(xxxx)
+wxAxios.post(xxxx)
+wxAxios.request({xxxx})
+
+或者
+
+axios = wxAxios.create({
   timeout: 0,
   header: {
     'my-hearder': '1111'
@@ -15,25 +21,25 @@ this.axios = new wxAxios({
   baseURL: ''
 });
 
-this.axios.interceptors.response.use(function(res) {
+axios.interceptors.response.use(function(res) {
   return res;
 }, function(reject) {
   return reject
 })
 
-this.axios.interceptors.request.use(function(res) {
+axios.interceptors.request.use(function(res) {
   return res;
 })
 
 // get请求
-this.axios.get('http://www.baidu.com/tes', {wzh: 'wzh'}).then(res => {
+axios.get('http://www.baidu.com/tes', {wzh: 'wzh'}).then(res => {
   console.log(res)
 }).catch(res => {
   console.log(res)
 })
 
 // post请求
-this.axios.post('http://www.baidu.com/tes', {wzh: 'wzh'}).then(res => {
+axios.post('http://www.baidu.com/tes', {wzh: 'wzh'}).then(res => {
   console.log(res)
 }).catch(res => {
   console.log(res)
@@ -42,7 +48,7 @@ this.axios.post('http://www.baidu.com/tes', {wzh: 'wzh'}).then(res => {
 // 取消请求
 const source = wxAxios.cancelToken.source();
 
-this.axios.request({
+axios.request({
   url: 'http://www.baidu.com/tset',
   cancelToken: source.token
 }).then(res => {
