@@ -38,6 +38,9 @@ Component({
     this.setValues();
   },
   methods: {
+    bindpickerComfirmHandle(e) {
+      console.log(e)
+    },
     pickerChangeHandle(e) {
       console.log(e)
       const {

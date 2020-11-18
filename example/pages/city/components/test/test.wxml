@@ -3,5 +3,6 @@
     id="c-picker"
     bindpickerChange="pickerChangeHandle"
     columns="{{ columns }}"
+    bindpickerComfirm="bindpickerComfirmHandle"
   ></c-picker>
 </view>
