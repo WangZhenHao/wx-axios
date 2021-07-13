@@ -1,6 +1,14 @@
 <!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<view>
+  <view class="wrap">
+    <view class="wrap-bottom">
+      <view
+        class="wrap-detail"
+        bind:touchstart="touchstartHandle"
+        bind:touchmove="touchmoveHandle"
+        bind:touchend="touchendHandle"
+        style="transition-duration: {{ transitionDuration }}; transform: {{ transform }}; transition-timing-function: {{ transitionTimingFunction }};"
+      ></view>
+    </view>
+  </view>
 </view>

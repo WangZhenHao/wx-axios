@@ -1,8 +1,21 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+.wrap {
+  width: 100%;
+  height: 420rpx;
+  background: linear-gradient(131deg, #E6BF81 0%, #FEEAC9 46%, #E6BF81 100%);
+  position: relative;
 }
-.log-item {
-  margin: 10rpx;
+
+.wrap-bottom {
+  position: absolute;
+  left: 50%;
+  bottom: -20rpx;
+  height: 120rpx;
+  width: 80%;
+  transform: translateX(-50%);
+  
+}
+.wrap-detail {
+  background: red;
+  width: 100%;
+  height: 100%;
 }

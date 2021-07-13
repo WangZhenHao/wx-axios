@@ -53,14 +53,14 @@ Page({
     // })
   },
   testPost() {
-    this.axios.post('/tes', {wzh: 'wzh'}).then(res => {
+    this.axios.post('/tes', {wzh: 'wzh', list: {name: 'wzh', age: 2}}).then(res => {
       console.log(res)
     }).catch(res => {
       console.log(res)
     })
   },
   testGet() {
-    this.axios.get('/tes', {wzh: 'wzh'}).then(res => {
+    this.axios.get('/tes', {wzh: 'wzh', list: [1,2,3,4]}).then(res => {
       console.log(res)
     }).catch(res => {
       console.log(res)
