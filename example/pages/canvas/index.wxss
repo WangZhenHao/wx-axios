@@ -1,0 +1,4 @@
+/* pages/canvas/index.wxss */
+#canvas {
+    /* background-color: pink; */
+}

@@ -48,9 +48,9 @@ Page({
     //   return reject
     // })
 
-    // this.axios.interceptors.request.use(function(res) {
-    //   return res;
-    // })
+    this.axios.interceptors.request.use(function(res) {
+      return res;
+    })
   },
   testPost() {
     this.axios.post('/tes', {wzh: 'wzh', list: {name: 'wzh', age: 2}}).then(res => {
