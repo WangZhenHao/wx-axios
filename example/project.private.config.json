@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -14,6 +15,12 @@
         {
           "name": "pages/canvas/index",
           "pathName": "pages/canvas/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/workFire/index",
+          "pathName": "pages/workFire/index",
           "query": "",
           "scene": null
         }

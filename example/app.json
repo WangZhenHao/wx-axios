@@ -2,7 +2,8 @@
   "pages":[
     "pages/logs/logs",
     "pages/index/index",
-    "pages/canvas/index"
+    "pages/canvas/index",
+    "pages/workFire/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
