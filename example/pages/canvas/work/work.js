@@ -42,101 +42,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const canvas1 = getCanvas('#canvas');
-    const canvas2 = getCanvas('#canvas2');
+    // const canvas1 = getCanvas('#canvas');
+    // const canvas2 = getCanvas('#canvas2');
 
-    Promise.all([canvas1, canvas2]).then((res) => {
-      canvas = res[0].canvas;
-      ctx = res[0].ctx;
+    // Promise.all([canvas1, canvas2]).then((res) => {
+    //   canvas = res[0].canvas;
+    //   ctx = res[0].ctx;
 
-      fontCtx = res[1].ctx;
-      fontCanvas = res[1].canvas;
-
-      // bigbooms.push(
-      //   new Boom(
-      //     { x: canvas._width / 2 + 30, y: canvas._height },
-      //     { x: canvas._width / 2, y: 200 },
-      //     {
-      //       ctx: ctx,
-      //     }
-      //   )
-      // );
-      // var textArr = ['新年快乐', '阖家幸福', '一帆风顺', '恭喜发财']
-      // setInterval(() => {
-      //   var a = getRandom(0, 10) >= 5 ? 1 : 2;
-      //   var dots
-      //   if(a === 1) {
-      //     const text = textArr[parseInt(getRandom(0, 4))]
-      //     dots = Boom.createWordPoint(fontCtx, fontCanvas, {
-      //           text,
-      //           dr: 12
-      //     });
-      //   } else {
-      //     dots = null;
-      //   }
-
-      //   var booms = new Boom(
-      //     { x: parseInt(getRandom(30, canvas._width)), y: canvas._height },
-      //     { x: parseInt(getRandom(100, canvas._width)), y: parseInt(getRandom(100, canvas._height / 2)) },
-      //     {
-      //       ctx,
-      //       canvas,
-      //       dots
-      //     }
-      //   )
-        
-      //   bigbooms.push(booms);
-      // }, 500)
-
-      // setTimeout(() => {
-      //   const dots = Boom.createWordPoint(fontCtx, fontCanvas, {
-      //     text: '撒旦飞洒',
-      //     dr: 12
-      //   });
-      //   bigbooms.push(
-      //     new Boom(
-      //       { x: canvas._width / 2 - 30, y: canvas._height },
-      //       { x: canvas._width / 2, y: 200 },
-      //       {
-      //         ctx: ctx,
-      //         dots,
-      //         canvas,
-      //       }
-      //     )
-      //   );
-      // }, 500);
-      // debugger
-      animate();
-    });
+    //   fontCtx = res[1].ctx;
+    //   fontCanvas = res[1].canvas;
+    //   animate();
+    // });
   },
-  tapHandle() {
-    bigbooms.push(
-      new Boom(
-        { x: canvas._width / 2 + 30, y: canvas._height },
-        { x: canvas._width / 2, y: 200 },
-        {
-          ctx: ctx,
+  created() {
+    var textArr = ['新年快乐', '阖家幸福', '一帆风顺', '恭喜发财']
+    var a = getRandom(0, 10) >= 5 ? 1 : 2;
+        var dots
+        if(a === 1) {
+          const text = textArr[parseInt(getRandom(0, 4))]
+          dots = Boom.createWordPoint(fontCtx, fontCanvas, {
+                text,
+                dr: 12
+          });
+        } else {
+          dots = null;
         }
-      )
-    );
 
-    setTimeout(() => {
-      const dots = Boom.createWordPoint(fontCtx, fontCanvas, {
-        text: '新年快乐',
-        dr: 12
-      });
-      bigbooms.push(
-        new Boom(
-          { x: canvas._width / 2 - 30, y: canvas._height },
-          { x: canvas._width / 2, y: 200 },
+        var booms = new Boom(
+          { x: parseInt(getRandom(30, canvas._width)), y: canvas._height },
+          { x: parseInt(getRandom(100, canvas._width)), y: parseInt(getRandom(100, canvas._height / 2)) },
           {
-            ctx: ctx,
-            dots,
+            ctx,
             canvas,
+            dots
           }
         )
-      );
-    }, 500);
+        
+        bigbooms.push(booms);
+  },
+  tapHandle() {
+    // this.created()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
