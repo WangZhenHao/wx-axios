@@ -52,11 +52,10 @@ Page({
       ctx.fillStyle = "rgba("+parseInt(getRandom(128,255))+","+parseInt(getRandom(128,255))+","+parseInt(getRandom(128,255))+" , 1)";
       ctx.fillText('test' , canvas._width/2 , canvas._height/2);
       debugger
-      canvasGetImageData('#canvas', canvas._width, canvas._height).then(res => {
-        debugger
-      })
-      var dotList = getimgData(canvas, ctx, 6);
-      // debugger
+
+      var dotList = getimgData(canvas, ctx, 10);
+  
+      debugger
       function draw() {
         ctx.clearRect(0, 0, canvas._width, canvas._height);
         var flag = true;
@@ -86,7 +85,7 @@ Page({
 
 
       }
-      // draw()
+      draw()
     })
   },
 

@@ -1,5 +1,5 @@
 const { getCanvas }  = require('./fire/utitls')
-const { Boom, putValue } = require('./fire/index.js')
+const { Boom, putValue, Frag } = require('./fire/index.js')
 
 function getRandom(a, b) {
   return Math.random() * (b - a) + a;
@@ -83,11 +83,34 @@ Page({
           var x = getRandom(canvas._width/5 , canvas._width*4/5);
           var y = canvas._width / 2;
 
-          var bigboom = new Boom({ x: canvas._width / 2, y: canvas._height } , 4,"#FFF" , { x:x , y:y }, null, { ctx, canvas });
+          var bigboom = new Boom({ x: canvas._width / 2, y: canvas._height } , 4,"#FFF" , { x: canvas._width / 2, y: 302 }, null, { ctx, canvas });
 
           bigbooms.push(bigboom)
 
-        animate()
+          // arr[1].ctx.fillStyle = 'red'
+          // arr[1].ctx.arc(100, 100, 10, 0, 2 * Math.PI)
+          // arr[1].ctx.fill();
+          // var shape = putValue(arr[1].canvas, arr[1].ctx, { innerHTML: '新年快乐', x, y }, 2, function(dots) {
+          //   var booms = []
+          //   var dx = canvas._width/2-x;
+          //   var dy = canvas._height/2-y;
+          //   for(var i=0;i<dots.length;i++){
+          //       var color = {a:dots[i].a,b:dots[i].b,c:dots[i].c}
+          //       var tx = dots[i].x;
+          //       var ty = dots[i].y;
+          //       var radius = 1;
+          //       var frag = new Frag(x , y , radius , color , tx- dx , ty-dy, ctx);
+          //       booms.push(frag);
+          //   }
+            
+          //   var bigboom = new Boom({ x: canvas._width / 2, y: canvas._height } , 4,"#FFF" , { x:x , y:y }, booms, { ctx, canvas });
+
+          //   bigbooms.push(bigboom)
+
+            animate()
+          // })
+          
+        // animate()
     })
   },
   init(res) {

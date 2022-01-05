@@ -23,6 +23,12 @@
           "pathName": "pages/workFire/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/canvas/work/work",
+          "pathName": "pages/canvas/work/work",
+          "query": "",
+          "scene": null
         }
       ]
     }

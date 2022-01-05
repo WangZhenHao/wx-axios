@@ -1,3 +1,5 @@
+// const { getimgData } = require('./utitls')
+
 var Frag = function (centerX, centerY, radius, color, tx, ty, ctx) {
   this.tx = tx;
   this.ty = ty;
@@ -119,22 +121,20 @@ Boom.prototype = {
     }
   },
   _shapBoom: function () {
-      if(this.shape) {
-          this.booms = this.shape
-      }
+      this.booms = this.shape
     // var that = this;
-    // putValue(ocas, octx, this.shape, 5, function (dots) {
-    //   var dx = canvas.width / 2 - that.x;
-    //   var dy = canvas.height / 2 - that.y;
-    //   for (var i = 0; i < dots.length; i++) {
-    //     color = { a: dots[i].a, b: dots[i].b, c: dots[i].c };
-    //     var x = dots[i].x;
-    //     var y = dots[i].y;
-    //     var radius = 1;
-    //     var frag = new Frag(that.x, that.y, radius, color, x - dx, y - dy);
-    //     that.booms.push(frag);
-    //   }
-    // });
+    // putValue(ocas , octx , this.shape , 5, function(dots){
+    //     var dx = canvas.width/2-that.x;
+    //     var dy = canvas.height/2-that.y;
+    //     for(var i=0;i<dots.length;i++){
+    //         color = {a:dots[i].a,b:dots[i].b,c:dots[i].c}
+    //         var x = dots[i].x;
+    //         var y = dots[i].y;
+    //         var radius = 1;
+    //         var frag = new Frag(that.x , that.y , radius , color , x-dx , y-dy);
+    //         that.booms.push(frag);
+    //     }
+    // })
   },
 };
 
@@ -146,16 +146,16 @@ Array.prototype.foreach = function (callback) {
 };
 
 function getimgData(canvas, context, dr) {
-  var imgData = context.getImageData(0, 0, canvas._width, canvas._height);
-  context.clearRect(0, 0, canvas._width, canvas._height);
+  var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
+//   context.clearRect(0, 0, canvas.width, canvas.height);
   var dots = [];
   for (var x = 0; x < imgData.width; x += dr) {
     for (var y = 0; y < imgData.height; y += dr) {
       var i = (y * imgData.width + x) * 4;
       if (imgData.data[i + 3] > 128) {
         var dot = {
-          x: x,
-          y: y,
+          x: x / 2,
+          y: y / 2,
           a: imgData.data[i],
           b: imgData.data[i + 1],
           c: imgData.data[i + 2],
@@ -171,11 +171,11 @@ function getRandom(a, b) {
   return Math.random() * (b - a) + a;
 }
 
-function putValue(canvas , context , ele , dr){
+function putValue(canvas , context , ele , dr, cb){
     context.clearRect(0,0,canvas.width,canvas.height);
     var text = ele.innerHTML;
     context.save();
-    var fontSize =200;
+    var fontSize =80;
     context.font = fontSize+"px 宋体 bold";
     context.textAlign = "center";
     context.textBaseline = "middle";
@@ -183,23 +183,12 @@ function putValue(canvas , context , ele , dr){
     context.fillText(text , canvas._width/2 , canvas._height/2);
     context.restore();
     var dots = getimgData(canvas , context , dr);
-    var dx = canvas._width/2-ele.x;
-    var dy = canvas._height/2-ele.y;
-
-    let booms = []
-    for(var i=0;i<dots.length;i++){
-        var color = {a:dots[i].a,b:dots[i].b,c:dots[i].c}
-        var x = dots[i].x;
-        var y = dots[i].y;
-        var radius = 1;
-        var frag = new Frag(ele.x , ele.y , radius , color , x-dx , y-dy, ele.ctx);
-        booms.push(frag);
-    }
-    callback(booms);
-
-    return booms;
+    
+    cb(dots)
+    return dots;
 }
 module.exports = {
     Boom,
-    putValue
+    putValue,
+    Frag
 };
