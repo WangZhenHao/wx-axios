@@ -31,6 +31,24 @@ function animate() {
   canvas.requestAnimationFrame(animate);
 }
 
+const fireList = [
+  {
+    word: '',
+    time: 200,
+  },
+  {
+    word: '新年快乐',
+    time: 600,
+  },
+  {
+    word: '',
+    time: 1200,
+  },
+  {
+    word: '一帆风顺',
+    time: 1600,
+  },
+];
 Component({
   properties: {},
   data: {},
@@ -47,43 +65,69 @@ Component({
         fontCanvas = res[1].canvas;
 
         animate();
-
-        
       });
-    }, 1000);
+    }, 100);
   },
   methods: {
     tapHandle() {
-        this.created()
+     
+      this.created();
     },
     created() {
-      var textArr = ['新年快乐', '阖家幸福', '一帆风顺', '恭喜发财'];
-      var a = getRandom(0, 10) >= 5 ? 1 : 2;
-      var dots;
-      if (a === 1) {
-        const text = textArr[parseInt(getRandom(0, 4))];
-        dots = Boom.createWordPoint(fontCtx, fontCanvas, {
-          text,
-          dr: 12,
-        });
-      } else {
-        dots = null;
-      }
+        
+        for(let item of fireList) {
+            setTimeout(() => {
+                let dots = ''
 
-      var booms = new Boom(
-        { x: parseInt(getRandom(30, canvas._width)), y: canvas._height },
-        {
-          x: parseInt(getRandom(100, canvas._width)),
-          y: parseInt(getRandom(100, canvas._height / 2)),
-        },
-        {
-          ctx,
-          canvas,
-          dots,
+                if(item.word) {
+                    dots = Boom.createWordPoint(fontCtx, fontCanvas, {
+                        text: item.word,
+                        dr: 12,
+                    });
+                } else {
+                    dots = null;
+                }
+
+                const booms = new Boom(
+                    { x: parseInt(canvas._width) / 2, y: canvas._height },
+                    { x: parseInt(canvas._width) / 2, y: 200 },
+                    {
+                        ctx,
+                        canvas,
+                        dots,
+                    }
+                )
+
+                bigbooms.push(booms);
+            }, item.time)
         }
-      );
+    //   var textArr = ['新年快乐', '阖家幸福', '一帆风顺', '恭喜发财'];
+    //   var a = getRandom(0, 10) >= 5 ? 1 : 2;
+    //   var dots;
+    //   if (a === 1) {
+    //     const text = textArr[parseInt(getRandom(0, 4))];
+    //     dots = Boom.createWordPoint(fontCtx, fontCanvas, {
+    //       text,
+    //       dr: 12,
+    //     });
+    //   } else {
+    //     dots = null;
+    //   }
 
-      bigbooms.push(booms);
+    //   var booms = new Boom(
+    //     { x: parseInt(getRandom(30, canvas._width)), y: canvas._height },
+    //     {
+    //       x: parseInt(getRandom(100, canvas._width)),
+    //       y: parseInt(getRandom(100, canvas._height / 2)),
+    //     },
+    //     {
+    //       ctx,
+    //       canvas,
+    //       dots,
+    //     }
+    //   );
+
+    //   bigbooms.push(booms);
     },
   },
 });
