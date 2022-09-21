@@ -37,8 +37,37 @@
 
   var cancelToken_1 = cancelToken;
 
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+      return typeof obj;
+    } : function (obj) {
+      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    }, _typeof(obj);
+  }
+
   function mergeConfig(config1, config2) {
-    return Object.assign(config1, config2);
+    // return Object.assign(config1, config2)
+    var conf = deepCopy(config1);
+    config2 = config2 || {};
+    return Object.assign(conf, config2);
+  }
+
+  function deepCopy(object) {
+    var newObj = object.constructor == Array ? [] : {};
+
+    if (_typeof(object) != 'object') {
+      return;
+    } else if (JSON) {
+      newObj = JSON.parse(JSON.stringify(object));
+    } else {
+      for (var i in object) {
+        newObj[i] = _typeof(object[i]) == 'object' ? this.deepCopy(object[i]) : object[i];
+      }
+    }
+
+    return newObj;
   }
 
   var mergeConfig_1 = mergeConfig;
@@ -164,7 +193,7 @@
   wxAxios.prototype = {
     request: function request() {
       var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      config = mergeConfig_1(this.defaults, config); // debugger
+      config = mergeConfig_1(this.defaults, config);
 
       if (!config.method) {
         config.method = 'get';
@@ -225,13 +254,13 @@
     var context = new wxAxios_1(config);
     var instance = wxAxios_1.prototype.request.bind(context);
     extend$1(instance, context);
-    return instance;
+    return context;
   }
 
   var axios = createInstance(defaults_1);
 
   axios.create = function create(config) {
-    return createInstance(Object.assign(defaults_1, config));
+    return createInstance(mergeConfig_1(defaults_1, config));
   };
 
   axios.cancelToken = cancelToken_1; // console.log(createInstance())

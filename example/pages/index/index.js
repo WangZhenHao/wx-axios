@@ -2,7 +2,9 @@
 //获取应用实例 
 const app = getApp()
 const axios = require('../../dist/wx-axois')
-// console.log(axios.cancelToken.source())
+const req = require('./js/request.js')
+
+console.log(req.defaults)
 Page({
   onLoad: function () {
  
@@ -24,7 +26,7 @@ Page({
       },
       baseURL: 'https://life.365gl.com'
     })
-
+    console.log(this.axios.defaults)
     // a.get('/kstore/mobile/citybanner/getAdvertBanner', {
     //   activityPicType: 1,
     //   cityId: 62,
@@ -93,5 +95,10 @@ Page({
     })
 
     source.cancel('取消请求')
-  } 
+  },
+  testLogin() {
+    req.get('/sugrec', { wd: '测试' }).then(res => {
+
+    })
+  }
 })

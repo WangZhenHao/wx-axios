@@ -1,10 +1,7 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/canvas/work/work",
-    "pages/logs/logs",
-    "pages/canvas/index",
-    "pages/workFire/index"
+    "pages/logs/logs"
     
   ],
   "window":{

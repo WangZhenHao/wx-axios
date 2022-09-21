@@ -1,4 +1,0 @@
-/* pages/canvas/index.wxss */
-#canvas {
-    background-color: rgba(0, 0, 0, .3);
-}

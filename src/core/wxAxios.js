@@ -15,7 +15,7 @@ function wxAxios(instanceConfig) {
 wxAxios.prototype = {
   request(config = {}) {
     config = mergeConfig(this.defaults, config)
-    // debugger
+    
     if(!config.method) {
       config.method = 'get'
     }
