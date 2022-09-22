@@ -5,5 +5,5 @@
   <button bindtap="testGet">测试Get方法</button>
   <button bindtap="testCanel">测试取消请求方法</button>
 
-  <button bindtap="testLogin">测试登录成功之后在请求</button>
+  <button bindtap="pageLoad">测试登录成功之后在请求</button>
 </view>

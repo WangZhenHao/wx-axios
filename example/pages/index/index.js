@@ -7,19 +7,6 @@ const req = require('./js/request.js')
 console.log(req.defaults)
 Page({
   onLoad: function () {
- 
-    // axios({
-    //   method: 'post',
-    //   url: 'http://www.baidu.com/test',
-    //   data: {
-    //     name: 'wzh'
-    //   }
-    // }).then(res => {
-    //   console.log(res)
-    // }).catch(res => {
-
-    // })
-    // console.log(axios.post)
     this.axios = axios.create({
       header: {
         'my-hearder': '111',
@@ -27,28 +14,6 @@ Page({
       baseURL: 'https://life.365gl.com'
     })
     console.log(this.axios.defaults)
-    // a.get('/kstore/mobile/citybanner/getAdvertBanner', {
-    //   activityPicType: 1,
-    //   cityId: 62,
-    //   bannerPosition: 1
-    // }).then(res => {
-    //   console.log(res)
-    // }).catch(res => {
-
-    // })
-    // this.axios = new axios({
-    //   timeout: 0,
-    //   header: {
-    //     'my-hearder': '1111'
-    //   },
-    //   baseURL: 'http://www.baidu.com'
-    // });
-
-    // this.axios.interceptors.response.use(function(res) {
-    //   return res;
-    // }, function(reject) {
-    //   return reject
-    // })
 
     this.axios.interceptors.request.use(function(res) {
       return res;
@@ -96,8 +61,28 @@ Page({
 
     source.cancel('取消请求')
   },
-  testLogin() {
-    req.get('/sugrec', { wd: '测试' }).then(res => {
+  pageLoad() {
+    req.get('/sugrec', {pre: 1,
+    p: 3,
+    ie: 'utf-8',
+    json: 1,
+    prod: 'pc',
+    from: 'pc_web',
+    sugsid: '37374,36557,37354,36885,37397,36569,37407,36789,37071,37317,26350,37285,37371',
+    wd: '111',
+    req: 2,
+    csor: 4}).then(res => {
+
+    })
+
+    req.get('/sugrec', { wd: '2222' }).then(res => {
+
+    })
+
+    req.get('/sugrec', { wd: '3333' }).then(res => {
+
+    })
+    req.get('/sugrec', { wd: '444' }).then(res => {
 
     })
   }
