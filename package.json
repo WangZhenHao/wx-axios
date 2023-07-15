@@ -2,19 +2,22 @@
   "name": "wx-axios",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/wx-axios.js",
+  "module": "dist/wx-axios.mjs",
+  "types": "dist/wx-axios.d.ts",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "dev": "rollup --config build/rollup.config.dev.js --watch",
-    "build": "node build/rollup.config.prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "rollup -c --watch",
+    "build": "rollup -c",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WangZhenHao/wx-axios.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -22,12 +25,9 @@
   },
   "homepage": "https://github.com/WangZhenHao/wx-axios#readme",
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
-    "rollup": "^1.27.4",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-uglify": "^6.0.3"
+    "esbuild": "^0.18.11",
+    "rollup": "^3.26.1",
+    "rollup-plugin-dts": "^5.3.0",
+    "rollup-plugin-esbuild": "^5.0.0"
   }
 }

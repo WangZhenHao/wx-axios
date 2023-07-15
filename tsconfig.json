@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "rootDir": "./",
+    "module": "commonjs",
+  },
+  "include": ["./main/**/*.ts"],
+  "exclude": ["node_modules"]
+}
