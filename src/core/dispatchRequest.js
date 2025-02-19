@@ -49,4 +49,8 @@ function dispatchRequest(config) {
   
 }
 
-module.exports = dispatchRequest
+function createDispatchRreuest() {
+  return dispatchRequest
+}
+
+module.exports = createDispatchRreuest

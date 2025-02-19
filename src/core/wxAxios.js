@@ -1,5 +1,5 @@
 const mergeConfig = require('./mergeConfig.js')
-const dispatchRequest = require('./dispatchRequest.js')
+const createDispatchRreuest = require('./dispatchRequest.js')
 const InterceptorManager = require('./interceptorManager.js')
 // const defaults = require('../defaults.js')
 const methods = ['get', 'post', 'put']
@@ -20,7 +20,7 @@ wxAxios.prototype = {
       config.method = 'get'
     }
     config.method = config.method.toLowerCase();
-    
+    const dispatchRequest = createDispatchRreuest()
     var chain = [dispatchRequest, null];
     var promise = Promise.resolve(config)
 
